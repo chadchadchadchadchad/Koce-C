@@ -34,6 +34,7 @@ namespace Koce
             }
 
             label1.Text = ime;
+            //ime
         }
     }
 }

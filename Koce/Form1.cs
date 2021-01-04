@@ -13,7 +13,6 @@ namespace Koce
 {
     public partial class Form1 : Form
     {
-        string ime = "";
         public Form1()
         {
             InitializeComponent();
@@ -28,12 +27,10 @@ namespace Koce
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-                    ime = reader.GetString(1);
+                    listBox1.Items.Add(reader.GetString(1) + " " + reader.GetString(2));
                 }
                 con.Close();
             }
-
-            label1.Text = ime;
             //ime
         }
     }

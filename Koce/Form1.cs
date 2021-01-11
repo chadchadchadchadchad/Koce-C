@@ -21,6 +21,8 @@ namespace Koce
         List<string> ime_k = new List<string>();
         List<string> posta_k = new List<string>();
 
+        List<string> ime_g = new List<string>();
+
         private void update_list()
         {
             ime_k.Clear();
@@ -59,15 +61,29 @@ namespace Koce
                 }
                 con.Close();
             }
+
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k FROM vsegore()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    gorelistbox.Items.Add(reader.GetString(0));
+
+                    ime_g.Add(reader.GetString(0));
+                }
+                con.Close();
+            }
         }
 
         private void krajilistbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            kraj_text.Text = ime_k[krajilistbox.SelectedIndex];
-            posta_text.Text = posta_k[krajilistbox.SelectedIndex];
+            kraj_text_kraj.Text = ime_k[krajilistbox.SelectedIndex];
+            posta_text_kraj.Text = posta_k[krajilistbox.SelectedIndex];
 
-            delete.Enabled = true;
-            update.Enabled = true;
+            delete_kraj.Enabled = true;
+            update_kraj.Enabled = true;
         }
 
         private void update_Click(object sender, EventArgs e)
@@ -75,17 +91,17 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT updatekraj('"+ kraj_text.Text + "', '"+ posta_text.Text + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT updatekraj('"+ kraj_text_kraj.Text + "', '"+ posta_text_kraj.Text + "')", con);
                 com.ExecuteNonQuery();
                 con.Close();
             }
 
             update_list();
-            kraj_text.Text = "";
-            posta_text.Text = "";
+            kraj_text_kraj.Text = "";
+            posta_text_kraj.Text = "";
 
-            delete.Enabled = false;
-            update.Enabled = false;
+            delete_kraj.Enabled = false;
+            update_kraj.Enabled = false;
         }
 
         private void insert_Click(object sender, EventArgs e)
@@ -93,17 +109,17 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT updatekraj('" + kraj_text.Text + "', '" + posta_text.Text + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT updatekraj('" + kraj_text_kraj.Text + "', '" + posta_text_kraj.Text + "')", con);
                 com.ExecuteNonQuery();
                 con.Close();
             }
 
             update_list();
-            kraj_text.Text = "";
-            posta_text.Text = "";
+            kraj_text_kraj.Text = "";
+            posta_text_kraj.Text = "";
 
-            delete.Enabled = false;
-            update.Enabled = false;
+            delete_kraj.Enabled = false;
+            update_kraj.Enabled = false;
         }
 
         private void delete_Click(object sender, EventArgs e)
@@ -111,17 +127,22 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT deletekraji('" + kraj_text.Text + "', '" + posta_text.Text + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT deletekraji('" + kraj_text_kraj.Text + "', '" + posta_text_kraj.Text + "')", con);
                 com.ExecuteNonQuery();
                 con.Close();
             }
 
             update_list();
-            kraj_text.Text = "";
-            posta_text.Text = "";
+            kraj_text_kraj.Text = "";
+            posta_text_kraj.Text = "";
 
-            delete.Enabled = false;
-            update.Enabled = false;
+            delete_kraj.Enabled = false;
+            update_kraj.Enabled = false;
+        }
+
+        private void gorelistbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -45,5 +45,12 @@ namespace Koce
                 con.Close();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 lep = new Form1();
+
+            lep.Show();
+        }
     }
 }

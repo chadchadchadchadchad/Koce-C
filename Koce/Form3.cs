@@ -50,6 +50,8 @@ namespace Koce
             Form4 spremenikoco = new Form4(ime_k);
 
             spremenikoco.Show();
+
+            this.Hide();
         }
     }
 }

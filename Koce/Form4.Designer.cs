@@ -36,6 +36,8 @@
             this.ime_text = new System.Windows.Forms.TextBox();
             this.nadmorska_text = new System.Windows.Forms.TextBox();
             this.gora_combo = new System.Windows.Forms.ComboBox();
+            this.change = new System.Windows.Forms.Button();
+            this.delete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -104,11 +106,32 @@
             this.gora_combo.Size = new System.Drawing.Size(165, 24);
             this.gora_combo.TabIndex = 8;
             // 
+            // change
+            // 
+            this.change.Location = new System.Drawing.Point(74, 590);
+            this.change.Name = "change";
+            this.change.Size = new System.Drawing.Size(94, 23);
+            this.change.TabIndex = 9;
+            this.change.Text = "Spremeni";
+            this.change.UseVisualStyleBackColor = true;
+            this.change.Click += new System.EventHandler(this.change_Click);
+            // 
+            // delete
+            // 
+            this.delete.Location = new System.Drawing.Point(485, 590);
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(75, 23);
+            this.delete.TabIndex = 10;
+            this.delete.Text = "Zbriši";
+            this.delete.UseVisualStyleBackColor = true;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 608);
+            this.ClientSize = new System.Drawing.Size(617, 651);
+            this.Controls.Add(this.delete);
+            this.Controls.Add(this.change);
             this.Controls.Add(this.gora_combo);
             this.Controls.Add(this.nadmorska_text);
             this.Controls.Add(this.ime_text);
@@ -135,5 +158,7 @@
         private System.Windows.Forms.TextBox ime_text;
         private System.Windows.Forms.TextBox nadmorska_text;
         private System.Windows.Forms.ComboBox gora_combo;
+        private System.Windows.Forms.Button change;
+        private System.Windows.Forms.Button delete;
     }
 }

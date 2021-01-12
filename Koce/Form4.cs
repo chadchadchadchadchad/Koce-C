@@ -56,5 +56,23 @@ namespace Koce
                 con.Close();
             }
         }
+
+        private void change_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT updatekoca('" + ime_text.Text + "', '" + opis_text.Text + "'," + nadmorska_text.Text + ", '" + gora_combo.SelectedItem + "', '" + ime_koce + "');", con);
+
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+
+            this.Hide();
+
+            kocapage koca = new kocapage(ime_text.Text);
+
+            koca.Show();
+        }
     }
 }

@@ -245,6 +245,7 @@
             this.deletegore.TabIndex = 15;
             this.deletegore.Text = "Zbriši";
             this.deletegore.UseVisualStyleBackColor = true;
+            this.deletegore.Click += new System.EventHandler(this.deletegore_Click);
             // 
             // updategore
             // 

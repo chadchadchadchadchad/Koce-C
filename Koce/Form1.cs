@@ -245,5 +245,39 @@ namespace Koce
             updategore.Enabled = false;
             deletegore.Enabled = false;
         }
+
+        private void deletegore_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT id_g FROM vrnigoraid('" + gorelistbox.SelectedItem + "')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                con.Close();
+            }
+
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT deletegora(" + id + ");", con);
+
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+
+            update_list();
+
+            ime_text_gore.Text = "";
+            gore_opis.Text = "";
+
+            updategore.Enabled = false;
+            deletegore.Enabled = false;
+        }
     }
 }

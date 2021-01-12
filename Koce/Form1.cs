@@ -219,19 +219,7 @@ namespace Koce
 
         private void updategore_Click(object sender, EventArgs e)
         {
-            int id = 0;
-
-            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
-            {
-                con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT id_g FROM vrnigoraid('" + gorelistbox.SelectedItem + "')", con);
-                NpgsqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                    id = reader.GetInt32(0);
-                }
-                con.Close();
-            }
+            int id = gore[gorelistbox.SelectedIndex].id;
 
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
@@ -253,19 +241,7 @@ namespace Koce
 
         private void deletegore_Click(object sender, EventArgs e)
         {
-            int id = 0;
-
-            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
-            {
-                con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT id_g FROM vrnigoraid('" + gorelistbox.SelectedItem + "')", con);
-                NpgsqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                    id = reader.GetInt32(0);
-                }
-                con.Close();
-            }
+            int id = gore[gorelistbox.SelectedIndex].id;
 
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {

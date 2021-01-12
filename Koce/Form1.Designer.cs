@@ -228,6 +228,7 @@
             this.gorevnesi.TabIndex = 16;
             this.gorevnesi.Text = "Vnesi";
             this.gorevnesi.UseVisualStyleBackColor = true;
+            this.gorevnesi.Click += new System.EventHandler(this.gorevnesi_Click);
             // 
             // ime_text_gore
             // 

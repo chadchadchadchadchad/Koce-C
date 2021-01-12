@@ -279,5 +279,25 @@ namespace Koce
             updategore.Enabled = false;
             deletegore.Enabled = false;
         }
+
+        private void gorevnesi_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT vnesigoro('" + ime_text_gore.Text + "', '" + gore_opis.Text + "', '" + kraj_combo.SelectedItem + "');", con);
+
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+
+            update_list();
+
+            ime_text_gore.Text = "";
+            gore_opis.Text = "";
+
+            updategore.Enabled = false;
+            deletegore.Enabled = false;
+        }
     }
 }

@@ -177,7 +177,7 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT deletekraji('" + kraj_text_kraj.Text + "', '" + posta_text_kraj.Text + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT deletekraji(" + kraji[krajilistbox.SelectedIndex].id + ")", con);
                 com.ExecuteNonQuery();
                 con.Close();
             }

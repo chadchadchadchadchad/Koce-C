@@ -22,7 +22,7 @@ namespace Koce
         }
     }
 
-    public class gore
+    public class gora
     {
         public int id { get; set; }
 
@@ -30,9 +30,17 @@ namespace Koce
 
         public string opis { get; set; }
         public int kraj_id { get; set; }
+
+        public gora(int i, string na, string op, int kraji)
+        {
+            id = i;
+            ime = na;
+            opis = op;
+            kraj_id = kraji;
+        }
     }
 
-    public class koce
+    public class koca
     {
         public int id { get; set; }
 

@@ -20,8 +20,7 @@ namespace Koce
 
         List<kraj> kraji = new List<kraj>();
 
-
-        List<string> ime_g = new List<string>();
+        List<gora> gore = new List<gora>();
 
         private void update_list()
         {
@@ -45,33 +44,28 @@ namespace Koce
                 con.Close();
             }
 
-            ime_g.Clear();
+            gore.Clear();
             gorelistbox.Items.Clear();
 
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k FROM vsegore()", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM vsegore()", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-                    gorelistbox.Items.Add(reader.GetString(0));
+                    gora a = new gora(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
 
-                    ime_g.Add(reader.GetString(0));
+                    gorelistbox.Items.Add(a.ime);
+
+                    gore.Add(a);
                 }
                 con.Close();
             }
 
-            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            foreach(gora a in gore)
             {
-                con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k FROM vsikraji()", con);
-                NpgsqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                    kraj_combo.Items.Add(reader.GetString(0));
-                }
-                con.Close();
+                kraj_combo.Items.Add(a.ime);
             }
         }
 
@@ -96,27 +90,22 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k FROM vsegore()", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM vsegore()", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-                    gorelistbox.Items.Add(reader.GetString(0));
+                    gora a = new gora(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3));
 
-                    ime_g.Add(reader.GetString(0));
+                    gorelistbox.Items.Add(a.ime);
+
+                    gore.Add(a);
                 }
                 con.Close();
             }
 
-            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            foreach (gora a in gore)
             {
-                con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k FROM vsikraji()", con);
-                NpgsqlDataReader reader = com.ExecuteReader();
-                while (reader.Read())
-                {
-                    kraj_combo.Items.Add(reader.GetString(0));
-                }
-                con.Close();
+                kraj_combo.Items.Add(a.ime);
             }
         }
 

@@ -22,11 +22,17 @@ namespace Koce
 
         private void kocelist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string a = kocelist.SelectedItem.ToString();
+            if (kocelist.SelectedIndex == -1)
+            {
+                MessageBox.Show("Izberite koco!");
+            }
+            else
+            {
+                string a = kocelist.SelectedItem.ToString();
 
-
-            kocapage koca = new kocapage(a);
-            koca.Show();
+                kocapage koca = new kocapage(a);
+                koca.Show();
+            }
         }
 
         private void Form2_Load(object sender, EventArgs e)

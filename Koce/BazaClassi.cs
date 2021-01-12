@@ -51,5 +51,15 @@ namespace Koce
         public int nadmorska_visina { get; set; }
 
         public int gora_id { get; set; }
+
+
+        public koca(int i, string im, string op, int nad, int g)
+        {
+            id = i;
+            ime = im;
+            opis = op;
+            nadmorska_visina = nad;
+            gora_id = g;
+        }
     }
 }

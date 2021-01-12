@@ -18,7 +18,7 @@ namespace Koce
             InitializeComponent();
         }
 
-        List<string> ime_koce = new List<string>();
+        List<koca> koce = new List<koca>();
 
         private void kocelist_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -40,13 +40,15 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_koce FROM vsekoce()", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM vsekoce()", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-                    kocelist.Items.Add(reader.GetString(0));
+                    koca a = new koca(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4));
 
-                    ime_koce.Add(reader.GetString(0));
+                    kocelist.Items.Add(a.ime);
+
+                    koce.Add(a);
                 }
                 con.Close();
             }

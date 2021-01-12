@@ -63,7 +63,7 @@ namespace Koce
                 con.Close();
             }
 
-            foreach(gora a in gore)
+            foreach(kraj a in kraji)
             {
                 kraj_combo.Items.Add(a.ime);
             }
@@ -103,7 +103,7 @@ namespace Koce
                 con.Close();
             }
 
-            foreach (gora a in gore)
+            foreach (kraj a in kraji)
             {
                 kraj_combo.Items.Add(a.ime);
             }

@@ -33,6 +33,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.change = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -81,11 +82,22 @@
             this.listBox1.Size = new System.Drawing.Size(668, 84);
             this.listBox1.TabIndex = 6;
             // 
+            // change
+            // 
+            this.change.Location = new System.Drawing.Point(622, 32);
+            this.change.Name = "change";
+            this.change.Size = new System.Drawing.Size(120, 46);
+            this.change.TabIndex = 7;
+            this.change.Text = "Spremeni podatke";
+            this.change.UseVisualStyleBackColor = true;
+            this.change.Click += new System.EventHandler(this.change_Click);
+            // 
             // kocapage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 574);
+            this.Controls.Add(this.change);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.richTextBox1);
@@ -106,5 +118,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button change;
     }
 }

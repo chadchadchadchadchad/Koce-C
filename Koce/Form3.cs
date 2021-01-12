@@ -44,5 +44,12 @@ namespace Koce
                 con.Close();
             }
         }
+
+        private void change_Click(object sender, EventArgs e)
+        {
+            Form4 spremenikoco = new Form4(ime_k);
+
+            spremenikoco.Show();
+        }
     }
 }

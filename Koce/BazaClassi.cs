@@ -13,6 +13,13 @@ namespace Koce
         public string ime { get; set; }
 
         public string posta { get; set; }
+
+        public kraj(int i, string na, string post)
+        {
+            id = i;
+            ime = na;
+            posta = post;
+        }
     }
 
     public class gore

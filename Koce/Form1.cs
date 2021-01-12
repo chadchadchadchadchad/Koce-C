@@ -18,28 +18,29 @@ namespace Koce
             InitializeComponent();
         }
 
-        List<string> ime_k = new List<string>();
-        List<string> posta_k = new List<string>();
+        List<kraj> kraji = new List<kraj>();
+
 
         List<string> ime_g = new List<string>();
 
         private void update_list()
         {
-            ime_k.Clear();
-            posta_k.Clear();
+            kraji.Clear();
+
             krajilistbox.Items.Clear();
 
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k, posta_k FROM vsikrajiinposta()", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT id_k, ime_k, posta_k FROM vsikrajiinposta()", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-                    krajilistbox.Items.Add(reader.GetString(0) + " " + reader.GetString(1));
+                    krajilistbox.Items.Add(reader.GetString(1) + " " + reader.GetString(2));
 
-                    ime_k.Add(reader.GetString(0));
-                    posta_k.Add(reader.GetString(1));
+                    kraj a = new kraj(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+
+                    kraji.Add(a);
                 }
                 con.Close();
             }
@@ -79,14 +80,15 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k, posta_k FROM vsikrajiinposta()", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT id_k, ime_k, posta_k FROM vsikrajiinposta()", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
-                    krajilistbox.Items.Add(reader.GetString(0) + " " + reader.GetString(1));
+                    krajilistbox.Items.Add(reader.GetString(1) + " " + reader.GetString(2));
 
-                    ime_k.Add(reader.GetString(0));
-                    posta_k.Add(reader.GetString(1));
+                    kraj a = new kraj(reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
+
+                    kraji.Add(a);
                 }
                 con.Close();
             }
@@ -126,8 +128,8 @@ namespace Koce
             }
             else
             {
-                kraj_text_kraj.Text = ime_k[krajilistbox.SelectedIndex];
-                posta_text_kraj.Text = posta_k[krajilistbox.SelectedIndex];
+                kraj_text_kraj.Text = kraji[krajilistbox.SelectedIndex].ime;
+                posta_text_kraj.Text = kraji[krajilistbox.SelectedIndex].posta;
 
                 delete_kraj.Enabled = true;
                 update_kraj.Enabled = true;

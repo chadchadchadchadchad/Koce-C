@@ -43,6 +43,35 @@ namespace Koce
                 }
                 con.Close();
             }
+
+            ime_g.Clear();
+            gorelistbox.Items.Clear();
+
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k FROM vsegore()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    gorelistbox.Items.Add(reader.GetString(0));
+
+                    ime_g.Add(reader.GetString(0));
+                }
+                con.Close();
+            }
+
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT ime_k FROM vsikraji()", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    kraj_combo.Items.Add(reader.GetString(0));
+                }
+                con.Close();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -121,7 +150,7 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT updatekraj('" + kraj_text_kraj.Text + "', '" + posta_text_kraj.Text + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT vnesikraj('" + kraj_text_kraj.Text + "', '" + posta_text_kraj.Text + "')", con);
                 com.ExecuteNonQuery();
                 con.Close();
             }
@@ -178,6 +207,43 @@ namespace Koce
                 }
                 con.Close();
             }
+
+            updategore.Enabled = true;
+            deletegore.Enabled = true;
+        }
+
+        private void updategore_Click(object sender, EventArgs e)
+        {
+            int id = 0;
+
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT id_g FROM vrnigoraid('" + gorelistbox.SelectedItem + "')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+                con.Close();
+            }
+
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT updategora('"+ ime_text_gore.Text + "', '" + gore_opis.Text + "','" + kraj_combo.SelectedItem + "', " + id + ");", con);
+
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+
+            update_list();
+
+            ime_text_gore.Text = "";
+            gore_opis.Text = "";
+
+            updategore.Enabled = false;
+            deletegore.Enabled = false;
         }
     }
 }

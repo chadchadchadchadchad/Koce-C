@@ -14,6 +14,14 @@ namespace Koce
 
         public string posta { get; set; }
 
+
+        public kraj()
+        {
+            id = 0;
+            ime = "";
+            posta = "";
+        }
+
         public kraj(int i, string na, string post)
         {
             id = i;
@@ -30,6 +38,15 @@ namespace Koce
 
         public string opis { get; set; }
         public int kraj_id { get; set; }
+
+
+        public gora()
+        {
+            id = 0;
+            ime = "";
+            opis = "";
+            kraj_id = 0;
+        }
 
         public gora(int i, string na, string op, int kraji)
         {
@@ -52,6 +69,15 @@ namespace Koce
 
         public int gora_id { get; set; }
 
+
+        public koca()
+        {
+            id = 0;
+            ime = "";
+            opis = "";
+            nadmorska_visina = 0;
+            gora_id = 0;
+        }
 
         public koca(int i, string im, string op, int nad, int g)
         {

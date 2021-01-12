@@ -14,11 +14,14 @@ namespace Koce
     public partial class kocapage : Form
     {
         string ime_k = "";
-        public kocapage(string koceime)
+        koca takoca = new koca();
+
+        public kocapage(koca a)
         {
             InitializeComponent();
 
-            ime_k = koceime;
+            ime_k = a.ime;
+            takoca = a;
         }
 
         private void kocapage_Load(object sender, EventArgs e)
@@ -47,7 +50,7 @@ namespace Koce
 
         private void change_Click(object sender, EventArgs e)
         {
-            Form4 spremenikoco = new Form4(ime_k);
+            Form4 spremenikoco = new Form4(takoca);
 
             spremenikoco.Show();
 

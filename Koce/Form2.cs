@@ -28,7 +28,7 @@ namespace Koce
             }
             else
             {
-                string a = kocelist.SelectedItem.ToString();
+                koca a = koce[kocelist.SelectedIndex];
 
                 kocapage koca = new kocapage(a);
                 koca.Show();

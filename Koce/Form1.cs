@@ -243,6 +243,7 @@ namespace Koce
         {
             int id = gore[gorelistbox.SelectedIndex].id;
 
+
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();

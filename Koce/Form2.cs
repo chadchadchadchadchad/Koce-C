@@ -35,8 +35,11 @@ namespace Koce
             }
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void update ()
         {
+            kocelist.Items.Clear();
+            koce.Clear();
+
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
@@ -54,6 +57,11 @@ namespace Koce
             }
         }
 
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            update();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             Form1 lep = new Form1();
@@ -66,6 +74,33 @@ namespace Koce
             Form5 dodaj = new Form5();
 
             dodaj.Show();
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            kocelist.Items.Clear();
+            koce.Clear();
+
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM vsekoce_search('"+ searchtext.Text +"')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    koca a = new koca(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetInt32(3), reader.GetInt32(4));
+
+                    kocelist.Items.Add(a.ime);
+
+                    koce.Add(a);
+                }
+                con.Close();
+            }
+        }
+
+        private void vsi_Click(object sender, EventArgs e)
+        {
+            update();
         }
     }
 }

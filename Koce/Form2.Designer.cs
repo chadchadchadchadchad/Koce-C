@@ -34,6 +34,7 @@
             this.kocelist = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.dodaj_koco = new System.Windows.Forms.Button();
+            this.vsi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // searchtext
@@ -51,6 +52,7 @@
             this.search.TabIndex = 1;
             this.search.Text = "Isci";
             this.search.UseVisualStyleBackColor = true;
+            this.search.Click += new System.EventHandler(this.search_Click);
             // 
             // label1
             // 
@@ -66,9 +68,9 @@
             // 
             this.kocelist.FormattingEnabled = true;
             this.kocelist.ItemHeight = 16;
-            this.kocelist.Location = new System.Drawing.Point(69, 171);
+            this.kocelist.Location = new System.Drawing.Point(69, 187);
             this.kocelist.Name = "kocelist";
-            this.kocelist.Size = new System.Drawing.Size(608, 452);
+            this.kocelist.Size = new System.Drawing.Size(608, 436);
             this.kocelist.TabIndex = 3;
             this.kocelist.SelectedIndexChanged += new System.EventHandler(this.kocelist_SelectedIndexChanged);
             // 
@@ -92,11 +94,22 @@
             this.dodaj_koco.UseVisualStyleBackColor = true;
             this.dodaj_koco.Click += new System.EventHandler(this.dodaj_koco_Click);
             // 
+            // vsi
+            // 
+            this.vsi.Location = new System.Drawing.Point(69, 142);
+            this.vsi.Name = "vsi";
+            this.vsi.Size = new System.Drawing.Size(98, 23);
+            this.vsi.TabIndex = 6;
+            this.vsi.Text = "Izpisi vse";
+            this.vsi.UseVisualStyleBackColor = true;
+            this.vsi.Click += new System.EventHandler(this.vsi_Click);
+            // 
             // koce_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 698);
+            this.Controls.Add(this.vsi);
             this.Controls.Add(this.dodaj_koco);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.kocelist);
@@ -119,5 +132,6 @@
         private System.Windows.Forms.ListBox kocelist;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button dodaj_koco;
+        private System.Windows.Forms.Button vsi;
     }
 }

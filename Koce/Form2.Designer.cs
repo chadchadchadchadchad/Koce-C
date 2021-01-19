@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.kocelist = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.dodaj_koco = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // searchtext
@@ -81,11 +82,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // dodaj_koco
+            // 
+            this.dodaj_koco.Location = new System.Drawing.Point(571, 647);
+            this.dodaj_koco.Name = "dodaj_koco";
+            this.dodaj_koco.Size = new System.Drawing.Size(106, 23);
+            this.dodaj_koco.TabIndex = 5;
+            this.dodaj_koco.Text = "Dodaj koco";
+            this.dodaj_koco.UseVisualStyleBackColor = true;
+            this.dodaj_koco.Click += new System.EventHandler(this.dodaj_koco_Click);
+            // 
             // koce_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 698);
+            this.Controls.Add(this.dodaj_koco);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.kocelist);
             this.Controls.Add(this.label1);
@@ -106,5 +118,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox kocelist;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button dodaj_koco;
     }
 }

@@ -60,5 +60,12 @@ namespace Koce
 
             lep.Show();
         }
+
+        private void dodaj_koco_Click(object sender, EventArgs e)
+        {
+            Form5 dodaj = new Form5();
+
+            dodaj.Show();
+        }
     }
 }

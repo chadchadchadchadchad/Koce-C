@@ -109,5 +109,20 @@ namespace Koce
 
             a.Show();
         }
+
+        private void user_Click(object sender, EventArgs e)
+        {
+            if (Variable.id_u > 0)
+            {
+                UserForm a = new UserForm();
+
+                a.Show();
+            }
+
+            else
+            {
+                MessageBox.Show("Niste pe prijavljeni");
+            }
+        }
     }
 }

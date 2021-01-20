@@ -82,6 +82,8 @@ namespace Koce
                 {
                     MessageBox.Show("Prijava uspesna");
 
+                    Variable.id_u = prijava;
+
                     this.Hide();
                 }
 

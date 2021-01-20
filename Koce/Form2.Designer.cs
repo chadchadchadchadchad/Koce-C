@@ -36,6 +36,7 @@
             this.dodaj_koco = new System.Windows.Forms.Button();
             this.vsi = new System.Windows.Forms.Button();
             this.prijava_but = new System.Windows.Forms.Button();
+            this.user = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // searchtext
@@ -115,11 +116,22 @@
             this.prijava_but.UseVisualStyleBackColor = true;
             this.prijava_but.Click += new System.EventHandler(this.prijava_but_Click);
             // 
+            // user
+            // 
+            this.user.Location = new System.Drawing.Point(94, 13);
+            this.user.Name = "user";
+            this.user.Size = new System.Drawing.Size(121, 23);
+            this.user.TabIndex = 8;
+            this.user.Text = "Uporabnik";
+            this.user.UseVisualStyleBackColor = true;
+            this.user.Click += new System.EventHandler(this.user_Click);
+            // 
             // koce_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 698);
+            this.Controls.Add(this.user);
             this.Controls.Add(this.prijava_but);
             this.Controls.Add(this.vsi);
             this.Controls.Add(this.dodaj_koco);
@@ -146,5 +158,6 @@
         private System.Windows.Forms.Button dodaj_koco;
         private System.Windows.Forms.Button vsi;
         private System.Windows.Forms.Button prijava_but;
+        private System.Windows.Forms.Button user;
     }
 }

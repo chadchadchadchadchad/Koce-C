@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace Koce
 {
+    public class Variable
+    {
+        public static int id_u = 0;
+    }
+
     public class kraj
     {
         public int id { get; set; }

@@ -174,6 +174,7 @@ namespace Koce
             this.geslo.TabIndex = 28;
             this.geslo.Text = "Spremeni geslo";
             this.geslo.UseVisualStyleBackColor = true;
+            this.geslo.Click += new System.EventHandler(this.geslo_Click);
             // 
             // geslos_text
             // 

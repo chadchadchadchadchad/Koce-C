@@ -111,5 +111,31 @@ namespace Koce
 
             a.Show();
         }
+
+        private void geslo_Click(object sender, EventArgs e)
+        {
+            if(geslo_text.Text == geslos_text.Text)
+            {
+                string pass = CreateMD5(geslo_text.Text);
+
+                using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+                {
+                    con.Open();
+                    NpgsqlCommand com = new NpgsqlCommand("SELECT spremeni_geslo(" + Variable.id_u + ", '" + pass + "')", con);
+                    com.ExecuteNonQuery();
+                    con.Close();
+                }
+
+                this.Hide();
+
+                UserForm a = new UserForm();
+
+                a.Show();
+            }
+            else
+            {
+                MessageBox.Show("Gesli se neujemata");
+            }
+        }
     }
 }

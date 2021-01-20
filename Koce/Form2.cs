@@ -102,5 +102,12 @@ namespace Koce
         {
             update();
         }
+
+        private void prijava_but_Click(object sender, EventArgs e)
+        {
+            PrijavaForm a = new PrijavaForm();
+
+            a.Show();
+        }
     }
 }

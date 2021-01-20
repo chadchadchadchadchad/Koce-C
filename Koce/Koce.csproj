@@ -125,6 +125,12 @@
     <Compile Include="RegistracijaForm.Designer.cs">
       <DependentUpon>RegistracijaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SpremeniUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpremeniUserForm.Designer.cs">
+      <DependentUpon>SpremeniUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,6 +166,9 @@
     </Compile>
     <EmbeddedResource Include="RegistracijaForm.resx">
       <DependentUpon>RegistracijaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpremeniUserForm.resx">
+      <DependentUpon>SpremeniUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>

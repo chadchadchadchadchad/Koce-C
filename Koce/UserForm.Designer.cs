@@ -33,6 +33,7 @@ namespace Koce
             this.label2 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.change = new System.Windows.Forms.Button();
+            this.odjava = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -71,12 +72,24 @@ namespace Koce
             this.change.TabIndex = 3;
             this.change.Text = "Spremeni podatke";
             this.change.UseVisualStyleBackColor = true;
+            this.change.Click += new System.EventHandler(this.change_Click);
+            // 
+            // odjava
+            // 
+            this.odjava.Location = new System.Drawing.Point(494, 133);
+            this.odjava.Name = "odjava";
+            this.odjava.Size = new System.Drawing.Size(75, 23);
+            this.odjava.TabIndex = 4;
+            this.odjava.Text = "Odjava";
+            this.odjava.UseVisualStyleBackColor = true;
+            this.odjava.Click += new System.EventHandler(this.odjava_Click);
             // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 432);
+            this.Controls.Add(this.odjava);
             this.Controls.Add(this.change);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label2);
@@ -95,5 +108,6 @@ namespace Koce
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button change;
+        private System.Windows.Forms.Button odjava;
     }
 }

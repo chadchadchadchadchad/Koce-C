@@ -36,5 +36,21 @@ namespace Koce
                 con.Close();
             }
         }
+
+        private void change_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            SpremeniUserForm a = new SpremeniUserForm();
+
+            a.Show();
+        }
+
+        private void odjava_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Variable.id_u = 0;
+        }
     }
 }

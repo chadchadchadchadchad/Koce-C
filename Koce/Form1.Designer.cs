@@ -49,6 +49,12 @@
             this.deletegore = new System.Windows.Forms.Button();
             this.updategore = new System.Windows.Forms.Button();
             this.jajaj = new System.Windows.Forms.Label();
+            this.kraj_ime_text = new System.Windows.Forms.TextBox();
+            this.kraj_posta_text = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.vnesi_goro_kraj = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -158,6 +164,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.vnesi_goro_kraj);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.kraj_posta_text);
+            this.tabPage2.Controls.Add(this.kraj_ime_text);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.kraj_combo);
             this.tabPage2.Controls.Add(this.gore_opis);
@@ -240,7 +252,7 @@
             // deletegore
             // 
             this.deletegore.Enabled = false;
-            this.deletegore.Location = new System.Drawing.Point(640, 539);
+            this.deletegore.Location = new System.Drawing.Point(618, 539);
             this.deletegore.Name = "deletegore";
             this.deletegore.Size = new System.Drawing.Size(75, 23);
             this.deletegore.TabIndex = 15;
@@ -251,7 +263,7 @@
             // updategore
             // 
             this.updategore.Enabled = false;
-            this.updategore.Location = new System.Drawing.Point(526, 539);
+            this.updategore.Location = new System.Drawing.Point(517, 539);
             this.updategore.Name = "updategore";
             this.updategore.Size = new System.Drawing.Size(95, 23);
             this.updategore.TabIndex = 14;
@@ -267,6 +279,57 @@
             this.jajaj.Size = new System.Drawing.Size(37, 17);
             this.jajaj.TabIndex = 13;
             this.jajaj.Text = "Opis";
+            // 
+            // kraj_ime_text
+            // 
+            this.kraj_ime_text.Location = new System.Drawing.Point(718, 447);
+            this.kraj_ime_text.Name = "kraj_ime_text";
+            this.kraj_ime_text.Size = new System.Drawing.Size(159, 22);
+            this.kraj_ime_text.TabIndex = 21;
+            // 
+            // kraj_posta_text
+            // 
+            this.kraj_posta_text.Location = new System.Drawing.Point(718, 489);
+            this.kraj_posta_text.Name = "kraj_posta_text";
+            this.kraj_posta_text.Size = new System.Drawing.Size(159, 22);
+            this.kraj_posta_text.TabIndex = 22;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(715, 407);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Nov kraj:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(718, 428);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 17);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Ime:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(718, 476);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 17);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Posta:";
+            // 
+            // vnesi_goro_kraj
+            // 
+            this.vnesi_goro_kraj.Location = new System.Drawing.Point(740, 539);
+            this.vnesi_goro_kraj.Name = "vnesi_goro_kraj";
+            this.vnesi_goro_kraj.Size = new System.Drawing.Size(110, 23);
+            this.vnesi_goro_kraj.TabIndex = 26;
+            this.vnesi_goro_kraj.Text = "Vnesi + kraj";
+            this.vnesi_goro_kraj.UseVisualStyleBackColor = true;
+            this.vnesi_goro_kraj.Click += new System.EventHandler(this.vnesi_goro_kraj_Click);
             // 
             // Form1
             // 
@@ -308,6 +371,12 @@
         private System.Windows.Forms.Button updategore;
         private System.Windows.Forms.Label jajaj;
         private System.Windows.Forms.Button deletegore;
+        private System.Windows.Forms.Button vnesi_goro_kraj;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox kraj_posta_text;
+        private System.Windows.Forms.TextBox kraj_ime_text;
     }
 }
 

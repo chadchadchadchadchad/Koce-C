@@ -281,5 +281,25 @@ namespace Koce
             updategore.Enabled = false;
             deletegore.Enabled = false;
         }
+
+        private void vnesi_goro_kraj_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT vnesi_goro_kraj('" + ime_text_gore.Text + "', '" + gore_opis.Text + "', '" + kraj_ime_text.Text + "', '" + kraj_posta_text.Text + "');", con);
+
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+
+            update_list();
+
+            ime_text_gore.Text = "";
+            gore_opis.Text = "";
+
+            updategore.Enabled = false;
+            deletegore.Enabled = false;
+        }
     }
 }

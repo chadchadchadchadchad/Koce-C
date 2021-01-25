@@ -50,6 +50,8 @@ namespace Koce
                 com.ExecuteNonQuery();
                 con.Close();
             }
+
+            this.Hide();
         }
     }
 }

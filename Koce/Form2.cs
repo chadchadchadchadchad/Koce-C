@@ -124,5 +124,12 @@ namespace Koce
                 MessageBox.Show("Niste pe prijavljeni");
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            GrafiForm lol = new GrafiForm();
+
+            lol.Show();
+        }
     }
 }

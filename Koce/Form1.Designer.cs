@@ -39,6 +39,12 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.vnesi_goro_kraj = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.kraj_posta_text = new System.Windows.Forms.TextBox();
+            this.kraj_ime_text = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.kraj_combo = new System.Windows.Forms.ComboBox();
             this.gore_opis = new System.Windows.Forms.RichTextBox();
@@ -49,12 +55,6 @@
             this.deletegore = new System.Windows.Forms.Button();
             this.updategore = new System.Windows.Forms.Button();
             this.jajaj = new System.Windows.Forms.Label();
-            this.kraj_ime_text = new System.Windows.Forms.TextBox();
-            this.kraj_posta_text = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.vnesi_goro_kraj = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -188,6 +188,57 @@
             this.tabPage2.Text = "Gore";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // vnesi_goro_kraj
+            // 
+            this.vnesi_goro_kraj.Location = new System.Drawing.Point(740, 539);
+            this.vnesi_goro_kraj.Name = "vnesi_goro_kraj";
+            this.vnesi_goro_kraj.Size = new System.Drawing.Size(110, 23);
+            this.vnesi_goro_kraj.TabIndex = 26;
+            this.vnesi_goro_kraj.Text = "Vnesi + kraj";
+            this.vnesi_goro_kraj.UseVisualStyleBackColor = true;
+            this.vnesi_goro_kraj.Click += new System.EventHandler(this.vnesi_goro_kraj_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(718, 476);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(48, 17);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Posta:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(718, 428);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 17);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Ime:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(715, 407);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Nov kraj:";
+            // 
+            // kraj_posta_text
+            // 
+            this.kraj_posta_text.Location = new System.Drawing.Point(718, 489);
+            this.kraj_posta_text.Name = "kraj_posta_text";
+            this.kraj_posta_text.Size = new System.Drawing.Size(159, 22);
+            this.kraj_posta_text.TabIndex = 22;
+            // 
+            // kraj_ime_text
+            // 
+            this.kraj_ime_text.Location = new System.Drawing.Point(718, 447);
+            this.kraj_ime_text.Name = "kraj_ime_text";
+            this.kraj_ime_text.Size = new System.Drawing.Size(159, 22);
+            this.kraj_ime_text.TabIndex = 21;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -279,57 +330,6 @@
             this.jajaj.Size = new System.Drawing.Size(37, 17);
             this.jajaj.TabIndex = 13;
             this.jajaj.Text = "Opis";
-            // 
-            // kraj_ime_text
-            // 
-            this.kraj_ime_text.Location = new System.Drawing.Point(718, 447);
-            this.kraj_ime_text.Name = "kraj_ime_text";
-            this.kraj_ime_text.Size = new System.Drawing.Size(159, 22);
-            this.kraj_ime_text.TabIndex = 21;
-            // 
-            // kraj_posta_text
-            // 
-            this.kraj_posta_text.Location = new System.Drawing.Point(718, 489);
-            this.kraj_posta_text.Name = "kraj_posta_text";
-            this.kraj_posta_text.Size = new System.Drawing.Size(159, 22);
-            this.kraj_posta_text.TabIndex = 22;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(715, 407);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "Nov kraj:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(718, 428);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 17);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Ime:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(718, 476);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 17);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Posta:";
-            // 
-            // vnesi_goro_kraj
-            // 
-            this.vnesi_goro_kraj.Location = new System.Drawing.Point(740, 539);
-            this.vnesi_goro_kraj.Name = "vnesi_goro_kraj";
-            this.vnesi_goro_kraj.Size = new System.Drawing.Size(110, 23);
-            this.vnesi_goro_kraj.TabIndex = 26;
-            this.vnesi_goro_kraj.Text = "Vnesi + kraj";
-            this.vnesi_goro_kraj.UseVisualStyleBackColor = true;
-            this.vnesi_goro_kraj.Click += new System.EventHandler(this.vnesi_goro_kraj_Click);
             // 
             // Form1
             // 

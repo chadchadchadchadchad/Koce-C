@@ -37,6 +37,7 @@
             this.vsi = new System.Windows.Forms.Button();
             this.prijava_but = new System.Windows.Forms.Button();
             this.user = new System.Windows.Forms.Button();
+            this.graf_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // searchtext
@@ -126,11 +127,22 @@
             this.user.UseVisualStyleBackColor = true;
             this.user.Click += new System.EventHandler(this.user_Click);
             // 
+            // graf_button
+            // 
+            this.graf_button.Location = new System.Drawing.Point(353, 647);
+            this.graf_button.Name = "graf_button";
+            this.graf_button.Size = new System.Drawing.Size(96, 23);
+            this.graf_button.TabIndex = 9;
+            this.graf_button.Text = "Grafi";
+            this.graf_button.UseVisualStyleBackColor = true;
+            this.graf_button.Click += new System.EventHandler(this.button2_Click);
+            // 
             // koce_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 698);
+            this.Controls.Add(this.graf_button);
             this.Controls.Add(this.user);
             this.Controls.Add(this.prijava_but);
             this.Controls.Add(this.vsi);
@@ -159,5 +171,6 @@
         private System.Windows.Forms.Button vsi;
         private System.Windows.Forms.Button prijava_but;
         private System.Windows.Forms.Button user;
+        private System.Windows.Forms.Button graf_button;
     }
 }

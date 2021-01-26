@@ -34,6 +34,7 @@ namespace Koce
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.change = new System.Windows.Forms.Button();
             this.odjava = new System.Windows.Forms.Button();
+            this.zbrisi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -84,11 +85,22 @@ namespace Koce
             this.odjava.UseVisualStyleBackColor = true;
             this.odjava.Click += new System.EventHandler(this.odjava_Click);
             // 
+            // zbrisi
+            // 
+            this.zbrisi.Location = new System.Drawing.Point(65, 397);
+            this.zbrisi.Name = "zbrisi";
+            this.zbrisi.Size = new System.Drawing.Size(144, 23);
+            this.zbrisi.TabIndex = 5;
+            this.zbrisi.Text = "Zbriši uporabnika";
+            this.zbrisi.UseVisualStyleBackColor = true;
+            this.zbrisi.Click += new System.EventHandler(this.zbrisi_Click);
+            // 
             // UserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 432);
+            this.Controls.Add(this.zbrisi);
             this.Controls.Add(this.odjava);
             this.Controls.Add(this.change);
             this.Controls.Add(this.listBox1);
@@ -109,5 +121,6 @@ namespace Koce
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button change;
         private System.Windows.Forms.Button odjava;
+        private System.Windows.Forms.Button zbrisi;
     }
 }

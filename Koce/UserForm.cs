@@ -52,5 +52,16 @@ namespace Koce
 
             Variable.id_u = 0;
         }
+
+        private void zbrisi_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
+            {
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT delete_uporabnik(" + Variable.id_u + ")", con);
+                com.ExecuteNonQuery();
+                con.Close();
+            }
+        }
     }
 }

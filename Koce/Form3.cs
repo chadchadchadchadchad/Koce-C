@@ -31,7 +31,7 @@ namespace Koce
             using (NpgsqlConnection con = new NpgsqlConnection("Server=rogue.db.elephantsql.com; User Id=clhpojwc;" + "Password=wm7N_asXtodPaLSASbaFBEAcB1MtcKMU; Database=clhpojwc;"))
             {
                 con.Open();
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM vrnikraj('"+ ime_k +"')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM vrnikoco('"+ ime_k +"')", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {

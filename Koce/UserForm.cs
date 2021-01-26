@@ -62,6 +62,10 @@ namespace Koce
                 com.ExecuteNonQuery();
                 con.Close();
             }
+
+            this.Hide();
+
+            Variable.id_u = 0;
         }
     }
 }

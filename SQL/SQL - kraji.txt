@@ -1,0 +1,104 @@
+CREATE OR REPLACE FUNCTION public.vsikrajiinposta(
+	)
+    RETURNS TABLE(id_k integer, ime_k character varying, posta_k character varying) 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+BEGIN
+   RETURN QUERY SELECT id, ime, posta FROM kraji ORDER BY ime;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.vsikraji(
+	)
+    RETURNS TABLE(ime_k character varying) 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+BEGIN
+   RETURN QUERY SELECT ime FROM kraji;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.vnesikraj(
+	ime_k character varying,
+	posta_k character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+BEGIN
+   INSERT INTO kraji (ime, posta)
+   VALUES (ime_k, posta_k);
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.updatekraj(
+	ime_k character varying,
+	posta_k character varying,
+	id_k integer)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+BEGIN
+   UPDATE kraji
+   SET ime = ime_k, posta = posta_k
+   WHERE id = id_k;
+END; 
+$BODY$;
+ 
+// zamenjana z zgornjo
+CREATE OR REPLACE FUNCTION public.updatekraj(
+	ime_k character varying,
+	posta_k character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+BEGIN
+   UPDATE kraji
+   SET ime = ime_k
+   WHERE posta = posta_k;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.deletekraji(
+	ime_k character varying,
+	posta_k character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+BEGIN
+   DELETE FROM kraji WHERE (ime_k = ime_k) AND (posta = posta_k);
+END; 
+$BODY$;
+// zamenjana
+ 
+CREATE OR REPLACE FUNCTION public.deletekraji(
+	id_k integer)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+BEGIN
+   DELETE FROM kraji WHERE (id = id_k);
+END; 
+$BODY$;

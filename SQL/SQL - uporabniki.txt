@@ -1,0 +1,116 @@
+CREATE OR REPLACE FUNCTION public.vrni_uporabnika(
+	id_u integer)
+    RETURNS TABLE(ime_u character varying, priimek_u character varying, email_u character varying, kraj_u character varying, tel_u character varying) 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+BEGIN
+	RETURN QUERY SELECT u.ime, u.priimek, u.email, k.ime, u.telefon FROM uporabniki u INNER JOIN kraji k ON k.id = u.kraj_id WHERE u.id = id_u;
+END; 
+$BODY$;
+
+ 
+CREATE OR REPLACE FUNCTION public.prijava(
+	email_u character varying,
+	pass_u character varying)
+    RETURNS integer
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+DECLARE
+	id_u INTEGER;
+BEGIN
+	SELECT INTO id_u id 
+	FROM uporabniki
+	WHERE (email = email_u) AND (geslo = pass_u);
+	
+	IF (id_u > 0) THEN
+		RETURN id_u;
+	ELSE
+		id_u := 0;
+		RETURN id_u;
+	END IF;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.registriraj(
+	ime_u character varying,
+	priimek_u character varying,
+	email_u character varying,
+	pass_u character varying,
+	kraj_id_u integer,
+	tel_u character varying)
+    RETURNS character varying
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+DECLARE 
+	obstaja integer;
+BEGIN 
+	obstaja := 0;
+	SELECT INTO obstaja id 
+	FROM uporabniki 
+	WHERE email = email_u;
+	IF(email_u NOT IN (SELECT  email FROM uporabniki)) THEN
+		INSERT INTO uporabniki(ime, priimek, email, geslo, kraj_id, telefon)
+		VALUES (ime_u, priimek_u, email_u, pass_u, kraj_id_u, tel_u);
+		RETURN 'uspesno';
+	ELSE
+		RETURN 'neuspesno';
+	END IF;
+END;
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.spremeni_podatke(
+	id_u integer,
+	ime_u character varying,
+	priimek_u character varying,
+	email_u character varying,
+	kraj_id_u integer,
+	tel_u character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+BEGIN 
+	UPDATE uporabniki
+	SET ime = ime_u, priimek = priimek_u, email = email_u, kraj_id = kraj_id_u, telefon = tel_u
+	WHERE id = id_u;
+END;
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.spremeni_geslo(
+	id_u integer,
+	pass character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+BEGIN 
+	UPDATE uporabniki
+	SET geslo = pass
+	WHERE id = id_u;
+END;
+$BODY$;
+ 
+CREATE FUNCTION delete_uporabnik(id_u integer)
+RETURNS VOID AS
+$$
+BEGIN
+	
+	DELETE FROM uporabniki
+	WHERE id = id_u;
+	
+END;
+$$ LANGUAGE 'plpgsql';

@@ -1,0 +1,42 @@
+CREATE FUNCTION public.trigger_za_brisanje_gor()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$
+BEGIN
+	DELETE FROM koce
+	WHERE gora_id = OLD.id;
+	
+	RETURN OLD;
+END;
+$BODY$;
+ 
+CREATE FUNCTION public.trigger_za_vnos()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$
+BEGIN
+	INSERT INTO arhiv_koce(koca_id, ime, opis, nadmorska_visina, gora_id)
+	VALUES(NEW.id, NEW.ime, NEW.opis, NEW.nadmorska_visina, NEW.gora_id);
+	
+	RETURN null;
+END;
+$BODY$;
+
+
+CREATE FUNCTION public.trigger_za_brisanje_krajov()
+    RETURNS trigger
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE NOT LEAKPROOF
+AS $BODY$
+BEGIN
+	DELETE FROM gore
+	WHERE kraj_id = OLD.id;
+	
+	RETURN OLD;
+END;
+$BODY$;

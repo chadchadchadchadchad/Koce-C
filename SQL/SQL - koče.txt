@@ -1,0 +1,90 @@
+CREATE OR REPLACE FUNCTION public.vsekoce_search(
+	ime_koce character varying)
+    RETURNS TABLE(id_k integer, ime_k character varying, opis_k text, nad_k integer, g_id integer) 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+BEGIN
+   RETURN QUERY SELECT * FROM koce WHERE ime LIKE ('%' || ime_koce || '%') ORDER BY ime;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.vsekoce(
+	)
+    RETURNS TABLE(id_k integer, ime_k character varying, opis_k text, nad_k integer, g_id integer) 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+BEGIN
+   RETURN QUERY SELECT * FROM koce ORDER BY ime;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.vrnikoco(
+	ime_a character varying)
+    RETURNS TABLE(ime_k character varying, opis_k text, nadmorska_visina_k integer, gora_k character varying) 
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+BEGIN
+   RETURN QUERY SELECT k.ime, k.opis, k.nadmorska_visina, g.ime
+   FROM koce k INNER JOIN gore g ON g.id = k.gora_id
+   WHERE k.ime = ime_a;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.vnesikoca(
+	ime_k character varying,
+	opis_k text,
+	nadmorska_k integer,
+	gora_id_k integer,
+	staro_ime character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+
+BEGIN
+   
+   INSERT INTO koce (ime, opis, gora_id, nadmorska_visina)
+   VALUES(ime_k, opis_k, gora_id_k, nadmorska_k);
+   
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.updatekoca(
+	ime_k character varying,
+	opis_k text,
+	nadmorska_k integer,
+	gora_k character varying,
+	staro_ime character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+DECLARE
+	gora_id_k integer;
+BEGIN
+   SELECT INTO gora_id_k id
+   FROM gore 
+   WHERE ime = gora_k;
+   
+   UPDATE koce
+   SET ime = ime_k, opis = opis_k, gora_id = gora_id_k, nadmorska_visina = nadmorska_k
+   WHERE ime = staro_ime;
+END; 
+$BODY$;
+
+

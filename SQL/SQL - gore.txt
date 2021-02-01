@@ -1,0 +1,117 @@
+CREATE OR REPLACE FUNCTION public.vsegore(
+	)
+    RETURNS TABLE(id_g integer, ime_g character varying, opis_g text, kraj_id_g integer) 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+BEGIN
+   RETURN QUERY SELECT * FROM gore;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.vrnigoro(
+	ime_a character varying)
+    RETURNS TABLE(ime_g character varying, opis_g text, kraj_g character varying) 
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+    ROWS 1000
+AS $BODY$
+BEGIN
+   RETURN QUERY SELECT g.ime, g.opis, k.ime
+   FROM kraji k INNER JOIN gore g ON k.id = g.kraj_id
+   WHERE g.ime = ime_a;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.vnesigoro(
+	ime_g character varying,
+	opis_g text,
+	kraj_g character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+DECLARE
+	kraj_id_g integer;
+BEGIN
+   SELECT INTO kraj_id_g id
+   FROM kraji 
+   WHERE ime = kraj_g;
+   
+   INSERT INTO gore (ime, opis, kraj_id)
+   VALUES (ime_g, opis_g, kraj_id_g);
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.updategora(
+	ime_g character varying,
+	opis_g text,
+	kraj_g character varying,
+	id_g integer)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+DECLARE
+	kraj_id_g integer;
+BEGIN
+   SELECT INTO kraj_id_g id
+   FROM kraji 
+   WHERE ime = kraj_g;
+   
+   UPDATE gore
+   SET ime = ime_g, opis = opis_g, kraj_id = kraj_id_g
+   WHERE id = id_g;
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.deletegora(
+	id_g integer)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+BEGIN
+   DELETE FROM gore WHERE (id = id_g);
+END; 
+$BODY$;
+ 
+CREATE OR REPLACE FUNCTION public.vnesi_goro_kraj(
+	ime_g character varying,
+	opis_g text,
+	ime_k character varying,
+	posta_k character varying)
+    RETURNS void
+    LANGUAGE 'plpgsql'
+
+    COST 100
+    VOLATILE 
+AS $BODY$
+DECLARE
+id_k integer;
+BEGIN
+
+	INSERT INTO kraji (ime, posta)
+	VALUES(ime_k, posta_k);
+	
+	SELECT INTO id_k id
+	FROM kraji 
+	WHERE ime = ime_k;
+	
+	INSERT INTO gore (ime, opis, kraj_id)
+	VALUES (ime_g, opis_g, id_k);
+
+END;
+$BODY$;
+
